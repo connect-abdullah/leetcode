@@ -1,12 +1,18 @@
-// using pre-built properties in typescript
+// using two-pointers approach
 
 function isPalindrome(s: string): boolean {
-    // converts string into lowercase and remove spaces/punctuations, then reverse it
-    let modifiedString = s.replace(/[^a-zA-Z0-9]/g,"").toLowerCase().split("").reverse().join("");
-
     // converts string into lowercase and remove spaces/punctuations
-    let normalString = s.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+    let cleanString = s.replace(/[^a-zA-Z0-9]/g,"").toLowerCase();
 
-    // return true if both are equal, otherwise false
-    return modifiedString === normalString;
+    let left = 0;
+    let right = cleanString.length - 1;
+
+    while(left <= right) {
+        if(cleanString[left] !== cleanString[right]){
+            return false
+        }
+        left++;
+        right--;
+    }
+    return true
 };
